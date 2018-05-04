@@ -31,7 +31,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.top = self.origtop - (self.rect.left//self.bounce%2)
 
     def gunpos(self):
-        pos = self.facing*self.gun_offset + self.rect.centerx
+        pos = self.facing * self.gun_offset + self.rect.centerx
         return pos, self.rect.top
 
     def setPos(self, x, y, w, h):
@@ -46,13 +46,17 @@ class Player(pygame.sprite.Sprite):
         self.h = h
     
     def moveUp(self, increment):
-        self.setPos(self.x, self.y - increment, self.w, self.h)
+        if self.y > 0:
+            self.setPos(self.x, self.y - increment, self.w, self.h)
 
     def moveDown(self, increment):
-        self.setPos(self.x, self.y + increment, self.w, self.h)
+        if self.y < 500:
+            self.setPos(self.x, self.y + increment, self.w, self.h)
 
     def moveLeft(self, increment):
-        self.setPos(self.x - increment, self.y, self.w, self.h)
+        if self.x > 0:
+            self.setPos(self.x - increment, self.y, self.w, self.h)
 
     def moveRight(self, increment):
-        self.setPos(self.x + increment, self.y, self.w, self.h)
+        if self.x < 1000:
+            self.setPos(self.x + increment, self.y, self.w, self.h)

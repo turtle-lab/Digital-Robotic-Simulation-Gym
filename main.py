@@ -67,7 +67,6 @@ def main(winstyle = 0):
     pygame.display.set_caption('Gym 10.0')
     pygame.mouse.set_visible(0)
 
-
     #create the background, tile the bgd image
     bgdtile = load_image('background.gif')
     background = pygame.Surface(SCREENRECT.size)
