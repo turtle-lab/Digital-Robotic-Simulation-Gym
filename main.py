@@ -5,6 +5,7 @@ import random, os.path
 #import basic pygame modules
 import pygame
 from player import Player
+from player import Obstacle
 from pygame.locals import *
 
 #see if we can load more than standard BMP
@@ -16,6 +17,7 @@ print(SCREENRECT.midbottom)
 
 main_dir = os.path.split(os.path.abspath(__file__))[0]
 
+#Load image
 def load_image(file):
     "loads an image, prepares it for play"
     file = os.path.join(main_dir, 'data', file)
@@ -25,15 +27,18 @@ def load_image(file):
         raise SystemExit('Could not load image "%s" %s'%(file, pygame.get_error()))
     return surface.convert()
 
+#Load "images"
 def load_images(*files):
     imgs = []
     for file in files:
         imgs.append(load_image(file))
     return imgs
 
+#Irrelevent stuff
 class dummysound:
     def play(self): pass
 
+#♪♫ Load sounds like music ♪♫
 def load_sound(file):
     if not pygame.mixer: return dummysound()
     file = os.path.join(main_dir, 'data', file)
@@ -44,6 +49,7 @@ def load_sound(file):
         print ('Warning, unable to load, %s' % file)
     return dummysound()
 
+#Main stuff
 def main(winstyle = 0):
     # Initialize pygame
     pygame.init()
@@ -80,8 +86,10 @@ def main(winstyle = 0):
     all = pygame.sprite.RenderUpdates()
     Player.containers = all
     player = Player()
+    obs = Obstacle()
     player.setPos(SCREENRECT.width / 2, SCREENRECT.height / 2, 10, 10)
 
+    #While EVERYTIME
     while player.alive():
 
         pressed = pygame.key.get_pressed()
@@ -112,6 +120,8 @@ def main(winstyle = 0):
             player.moveLeft(speed)
         if(pressed[pygame.K_RIGHT]):
             player.moveRight(speed)
+        if(pressed[pygame.K_SPACE]):
+            obs.addObstacle(random.randint(0, 1000), random.randint(0, 500))
         player.move(direction)
 
         #draw the scene
