@@ -76,9 +76,11 @@ def main(winstyle = 0):
     #create the background, tile the bgd image
     bgdtile = load_image('background.gif')
     background = pygame.Surface(SCREENRECT.size)
+
     for x in range(0, SCREENRECT.width, bgdtile.get_width()):
         for y in range(0, SCREENRECT.height, bgdtile.get_height()):
             background.blit(bgdtile, (x, y))
+            
     screen.blit(background, (0,0))
     pygame.display.flip()
 
@@ -90,7 +92,7 @@ def main(winstyle = 0):
     player.setPos(SCREENRECT.width / 2, SCREENRECT.height / 2, 10, 10)
 
     #While EVERYTIME
-    while player.alive():
+    while True:
 
         pressed = pygame.key.get_pressed()
 
@@ -111,7 +113,7 @@ def main(winstyle = 0):
 
         direction = keystate[K_RIGHT] - keystate[K_LEFT]
 
-        speed = 0.05
+        speed = 2
         if(pressed[pygame.K_UP]):
             player.moveUp(speed)
         if(pressed[pygame.K_DOWN]):

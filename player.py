@@ -1,38 +1,57 @@
 import pygame
 import random
+import time
 from pygame.locals import *
 
 #THE PLAYER
 class Player(pygame.sprite.Sprite):
+    pygame.init()
+
     images = []
     speed = 20
     bounce = 24
     gun_offset = -11
 
+    size = [1000, 500]
+    screen = pygame.display.set_mode(size)
+
+    white = (255, 128, 0)
+
+    font1 = pygame.font.SysFont("calibri",40)
+
+    clock = pygame.time.Clock()
+
+    playerW = 50
+    playerH = 50
+
     #Init player
     def __init__(self):
-        pygame.sprite.Sprite.__init__(self, self.containers)
-        self.image = self.images[0]
         self.x = 0
         self.y = 0
-        self.w = 0
-        self.h = 0
-        self.screenrect = Rect(self.x, self.y, self.w, self.h)
-        self.rect = self.image.get_rect(midbottom=self.screenrect.midbottom)
-        self.reloading = 0
-        self.origtop = self.rect.top
-        self.facing = -1
+        self.w = 50
+        self.h = 50
+        self.clock.tick(60)
+        self.drawSensor()
+
+    def drawPlayer(self, px, py, pw, ph, pcolor, pwidth):
+        pygame.draw.rect(self.screen, pcolor, [px, py, pw, ph], pwidth)
+        pygame.display.update()
+
+    def drawSensor(self):
+        pygame.draw.line(self.screen, self.white, [self.x + self.playerW / 2, self.y], [self.x + self.playerW / 2, self.y - 100], 5)
+        pygame.display.update()
 
     #Repaint on movement
     def move(self, direction):
-        if direction: self.facing = direction
-        self.rect.move_ip(direction * self.speed, 0)
-        self.rect = self.rect.clamp(self.screenrect)
-        if direction < 0:
-            self.image = self.images[0]
-        elif direction > 0:
-            self.image = self.images[1]
-        self.rect.top = self.origtop - (self.rect.left//self.bounce%2)
+        self.drawPlayer(self.x, self.y, self.playerW, self.playerH, self.white, 5)
+        pygame.display.update()
+        self.drawSensor()
+        pygame.display.update()
+
+        text = self.font1.render("TextA", True,(255,255,255))
+        self.screen.blit(text, [0, 0])
+
+        print(self.x, self.y, self.w, self.h)
 
     #Default aliens example shooter pos
     def gunpos(self):
@@ -41,15 +60,11 @@ class Player(pygame.sprite.Sprite):
 
     #Set pos of the player
     def setPos(self, x, y, w, h):
-        self.screenrect = Rect(x, y, w, h)
-        self.rect = self.image.get_rect(midbottom=self.screenrect.midbottom)
-        self.reloading = 0
-        self.origtop = self.rect.top
-        self.facing = -1
         self.x = x
         self.y = y
         self.w = w
         self.h = h
+        pygame.display.update()
     
     #Move stuff
     def moveUp(self, increment):
