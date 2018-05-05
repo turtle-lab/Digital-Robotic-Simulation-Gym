@@ -5,4 +5,4 @@ This system was designed to simulate a microcontroller what recives orders and t
 This allows us to test complex AI algorythms without a real robot, such as simple programmed algorythms(look at the examples
 directory) to complex mathematical solutions to certain problems in the agent behaviour.
 
-*stuff what needs to be writed by the notes we have in the real world
+**stuff what needs to be writed by the notes we have in the real world**
