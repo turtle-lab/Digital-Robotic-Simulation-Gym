@@ -5,22 +5,29 @@ from pygame.locals import *
 
 #THE PLAYER
 class Player(pygame.sprite.Sprite):
+    #Init pygame
     pygame.init()
 
+    #Main game constants
     images = []
     speed = 20
     bounce = 24
     gun_offset = -11
 
+    #Screen objects
     size = [1000, 500]
     screen = pygame.display.set_mode(size)
 
-    white = (255, 128, 0)
+    #Colors
+    orange = (255, 128, 0)
 
+    #Text constants
     font1 = pygame.font.SysFont("calibri",40)
 
+    #Main clock object
     clock = pygame.time.Clock()
 
+    #Player constants
     playerW = 50
     playerH = 50
 
@@ -33,17 +40,19 @@ class Player(pygame.sprite.Sprite):
         self.clock.tick(60)
         self.drawSensor()
 
+    #Draw the player
     def drawPlayer(self, px, py, pw, ph, pcolor, pwidth):
         pygame.draw.rect(self.screen, pcolor, [px, py, pw, ph], pwidth)
         pygame.display.update()
 
+    #Draw the sensor
     def drawSensor(self):
-        pygame.draw.line(self.screen, self.white, [self.x + self.playerW / 2, self.y], [self.x + self.playerW / 2, self.y - 100], 5)
+        pygame.draw.line(self.screen, self.orange, [self.x + self.playerW / 2, self.y], [self.x + self.playerW / 2, self.y - 100], 5)
         pygame.display.update()
 
     #Repaint on movement
     def move(self, direction):
-        self.drawPlayer(self.x, self.y, self.playerW, self.playerH, self.white, 5)
+        self.drawPlayer(self.x, self.y, self.playerW, self.playerH, self.orange, 5)
         pygame.display.update()
         self.drawSensor()
         pygame.display.update()
@@ -85,35 +94,3 @@ class Player(pygame.sprite.Sprite):
     def moveRight(self, increment):
         if self.x < 1000:
             self.setPos(self.x + increment, self.y, self.w, self.h)
-
-#THE OBSTACLE STUFF
-class Obstacle(pygame.sprite.Sprite):
-    #Obstacle class
-    obstaclesX = []
-    obstaclesY = []
-    obstacleNum = 0
-
-    #Init the obstacles
-    def __init__(self):
-        obstacleNum = 0
-        obstaclesX = []
-        obstaclesY = []
-
-    #Add a new obstacle in the defined position
-    def addObstacle(self, x, y):
-        self.obstacleNum = self.obstacleNum + 1
-
-        self.x = x
-        self.y = y
-
-        self.obstaclesX.append(self.x)
-        self.obstaclesY.append(self.y)
-
-        print(self.obstaclesX, self.obstaclesY)
-
-    #Draw stuff
-    def DrawObstacles():
-        #Canvas creation and drawing
-        #IDK how to create a canvas but I think the final result should look like this:
-        #Canvas.FillRect(obstacleX, obstacleY, 10, 10, Color.white)
-        print("test")

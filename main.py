@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+#Main file of the digital simulation
+
 
 import random, os.path
 
@@ -12,6 +13,7 @@ from pygame.locals import *
 if not pygame.image.get_extended():
     raise SystemExit("Sorry, extended image module required")
 
+#Get he rect of the screen
 SCREENRECT = Rect(0, 0, 1000, 500)
 print(SCREENRECT.midbottom)
 
@@ -77,10 +79,12 @@ def main(winstyle = 0):
     bgdtile = load_image('background.gif')
     background = pygame.Surface(SCREENRECT.size)
 
+    #Render the background
     for x in range(0, SCREENRECT.width, bgdtile.get_width()):
         for y in range(0, SCREENRECT.height, bgdtile.get_height()):
             background.blit(bgdtile, (x, y))
-            
+    
+    #Blit the background
     screen.blit(background, (0,0))
     pygame.display.flip()
 
@@ -93,9 +97,7 @@ def main(winstyle = 0):
 
     #While EVERYTIME
     while True:
-
         pressed = pygame.key.get_pressed()
-
         #get input
         for event in pygame.event.get():
             if event.type == QUIT or \
@@ -111,8 +113,10 @@ def main(winstyle = 0):
 
         #handle player input
 
+        #Set the direction
         direction = keystate[K_RIGHT] - keystate[K_LEFT]
 
+        #Get agent input
         speed = 2
         if(pressed[pygame.K_UP]):
             player.moveUp(speed)
@@ -130,6 +134,7 @@ def main(winstyle = 0):
         dirty = all.draw(screen)
         pygame.display.update(dirty)
 
+    #Setup the mixer
     if pygame.mixer:
         pygame.mixer.music.fadeout(1000)
     pygame.time.wait(1000)
