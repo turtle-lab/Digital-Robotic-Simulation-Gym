@@ -1,3 +1,5 @@
+import pygame
+
 #THE OBSTACLE STUFF
 class Obstacle(pygame.sprite.Sprite):
     #Obstacle class

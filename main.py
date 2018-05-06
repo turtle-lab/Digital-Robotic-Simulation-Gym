@@ -6,7 +6,7 @@ import random, os.path
 #import basic pygame modules
 import pygame
 from player import Player
-from player import Obstacle
+from obstacle import Obstacle
 from pygame.locals import *
 
 #see if we can load more than standard BMP
