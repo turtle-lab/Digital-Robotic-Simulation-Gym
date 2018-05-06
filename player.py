@@ -48,12 +48,15 @@ class Player(pygame.sprite.Sprite):
         self.drawSensor()
         pygame.display.update()
 
-        text = self.font1.render("TextA", True,(255,255,255))
+        t = str(self.x) + ", " + str(self.y)
+
+        text = self.font1.render(t, True, (255, 255, 255))
         self.screen.blit(text, [0, 0])
+        pygame.display.update()
 
         print(self.x, self.y, self.w, self.h)
 
-    #Default aliens example shooter pos
+    #Default "aliens example" shooter pos
     def gunpos(self):
         pos = self.facing * self.gun_offset + self.rect.centerx
         return pos, self.rect.top
