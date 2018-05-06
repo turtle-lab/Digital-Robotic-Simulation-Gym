@@ -49,7 +49,6 @@ class Player(pygame.sprite.Sprite):
         pygame.display.update()
 
         t = str(self.x) + ", " + str(self.y)
-        pygame.display.update()
 
         text = self.font1.render(t, True, (255, 255, 255))
         self.screen.blit(text, [0, 0])
