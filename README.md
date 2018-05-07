@@ -21,16 +21,16 @@ Instead of running this command everytime you want to execute the program, you c
 
 #### Main code workflow
 When you want to make changes to the code for changing the behaviour of the program, you have to know a couple of things:
-* I'ts not recomended to modify the main.py file, because it going to change the enviroment in what you are working.
-* Also, is not recomended to change the "draw" methods, because he is the ones what draw stuff on the screen.
+-I'ts not recomended to modify the main.py file, because it going to change the enviroment in what you are working.
+-Also, is not recomended to change the "draw" methods, because he is the ones what draw stuff on the screen.
 
 Then you need to know what there is a few main classes:
-##### The main.py file contains no classes, but in it there is the main methods
-##### The player.py contains only one class
+###### The main.py file contains no classes, but in it there is the main methods
+###### The player.py contains only one class
 * The Player class has got the main drawing and basic moving methods methods. Using this methods from the Agent class is what does the player move. Not recomended to modify.
-##### The obstacle.py file contains also one class
+###### The obstacle.py file contains also one class
 * This file is work in progress so for the moment I can't give more Info.
-##### The agent.py file
+###### The agent.py file
 * For the moment it does not exist, but in the future, here is were all the modificable stuff is. It's the behaviour what program uses for controlling the player. The better modificable file. Some example behaviour going to be in the future "examples" directory.
 
 #### For making changes on the agent.py
