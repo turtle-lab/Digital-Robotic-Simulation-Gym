@@ -19,9 +19,15 @@ python main.py
 ```
 Instead of running this command everytime you want to execute the program, you can just execute the "start.bat" file.
 
+Then, you should see something like this:
+![alt text](https://github.com/jlagarespo/Digital-Robotic-Simulation-Gym/blob/master/data/main_window.png)
+If you see it, sucsses! Your done it; now you can start creating your own agent behaviours and experimenting by yourself.
+
 #### Main code workflow
 When you want to make changes to the code for changing the behaviour of the program, you have to know a couple of things:
+
 -I'ts not recomended to modify the main.py file, because it going to change the enviroment in what you are working.
+
 -Also, is not recomended to change the "draw" methods, because he is the ones what draw stuff on the screen.
 
 Then you need to know what there is a few main classes:
