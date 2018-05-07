@@ -95,7 +95,12 @@ def main(winstyle = 0):
     obs = Obstacle()
     player.setPos(SCREENRECT.width / 2, SCREENRECT.height / 2, 10, 10)
 
-    #While EVERYTIME
+    #Setup the mixer
+    if pygame.mixer:
+        pygame.mixer.music.fadeout(1000)
+    pygame.time.wait(1000)
+    pygame.quit()
+
     while True:
         pressed = pygame.key.get_pressed()
         #get input
@@ -105,43 +110,13 @@ def main(winstyle = 0):
                     return
         keystate = pygame.key.get_pressed()
 
-        # clear/erase the last drawn sprites
-        all.clear(screen, background)
 
-        #update all the sprites
-        all.update()
+    # clear/erase the last drawn sprites
+    all.clear(screen, background)
 
-        #handle player input
+    #update all the sprites
+    all.update()
 
-        #Set the direction
-        direction = keystate[K_RIGHT] - keystate[K_LEFT]
-
-        #Get agent input
-        speed = 2
-        if(pressed[pygame.K_UP]):
-            player.moveUp(speed)
-        if(pressed[pygame.K_DOWN]):
-            player.moveDown(speed)
-        if(pressed[pygame.K_LEFT]):
-            player.moveLeft(speed)
-        if(pressed[pygame.K_RIGHT]):
-            player.moveRight(speed)
-        if(pressed[pygame.K_SPACE]):
-            obs.addObstacle(random.randint(0, 1000), random.randint(0, 500))
-        player.move(direction)
-
-        #draw the scene
-        dirty = all.draw(screen)
-        pygame.display.update(dirty)
-
-    #Setup the mixer
-    if pygame.mixer:
-        pygame.mixer.music.fadeout(1000)
-    pygame.time.wait(1000)
-    pygame.quit()
-
-
-
-#call the "main" function if running this script
-if __name__ == '__main__': main()
+#Call the "main" function if running this script
+main(0)
 
