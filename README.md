@@ -52,7 +52,7 @@ Then you need to know what there is a few main classes:
 ###### The obstacle.py file contains also one class
 * This file is work in progress so for the moment I can't give more Info.
 ###### The agent.py file
-* For the moment it does not exist, but in the future, here is were all the modificable stuff is. It's the behaviour what program uses for controlling the player. The better modificable file. Some example behaviour going to be in the future "examples" directory.
+* As the obstacle class, this class still WIP, and it does all the program to go bad. So when finished we going to tell here how to create your own agent behaviours.
 
 #### For making changes on the agent.py
 Use the Player class methods of movement and obstacle detection to controll the behaviour of the robot what you can write inside this class.
