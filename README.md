@@ -41,9 +41,9 @@ If you see it, sucsses! Your done it; now you can start creating your own agent 
 #### Main code workflow
 When you want to make changes to the code for changing the behaviour of the program, you have to know a couple of things:
 
--I'ts not recomended to modify the main.py file, because it going to change the enviroment in what you are working.
+    -I'ts not recomended to modify the main.py file, because it going to change the enviroment in what you are working.
 
--Also, is not recomended to change the "draw" methods, because he is the ones what draw stuff on the screen.
+    -Also, is not recomended to change the "draw" methods, because he is the ones what draw stuff on the screen.
 
 Then you need to know what there is a few main classes:
 ###### The main.py file contains no classes, but in it there is the main methods
