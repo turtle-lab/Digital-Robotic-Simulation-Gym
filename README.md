@@ -1,6 +1,21 @@
 # Digital Robotic Simulation Gym Space
 ## A microcontroller simulator inside the computer in python
 
+###### Requeriments:
+* Python 3.6
+https://www.python.org/
+* pygame
+https://www.pygame.org/
+
+###### Recomended:
+* Conda
+https://conda.io/
+* A minimal computer
+
+      -2 GB of RAM
+
+      -At least a Pentium 4
+
 This system was designed to simulate a microcontroller what recives orders and then executes them(like move up, move right etc.).
 This allows us to test complex AI algorythms without a real robot, such as simple programmed algorythms(look at the examples
 directory) to complex mathematical solutions to certain problems in the agent behaviour.
