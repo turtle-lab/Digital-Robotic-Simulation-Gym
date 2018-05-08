@@ -109,7 +109,6 @@ def main(winstyle = 0):
     pygame.time.wait(1000)
     pygame.quit()
 
-
     # clear/erase the last drawn sprites
     all.clear(screen, background)
 

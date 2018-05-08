@@ -9,6 +9,8 @@ class Obstacle(pygame.sprite.Sprite):
 
     #Init the obstacles
     def __init__(self):
+        pygame.init()
+        
         obstacleNum = 0
         obstaclesX = []
         obstaclesY = []
