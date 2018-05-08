@@ -1,7 +1,9 @@
 import pygame
+import random, os.path
 
 from player import Player
 from obstacle import *
+from pygame.locals import *
 
 #Here is the behaviour of the controller
 class Agent:
@@ -22,6 +24,8 @@ class Agent:
     #For example, here is a basic key controlling algorythm.
     #You can find examples of pre-made codes in the "examples folder"
     def main(self):
+        pygame.init()
+
         while True:
             pressed = pygame.key.get_pressed()
             keystate = pygame.key.get_pressed()

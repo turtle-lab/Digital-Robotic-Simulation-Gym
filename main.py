@@ -29,7 +29,7 @@ def load_image(file):
         raise SystemExit('Could not load image "%s" %s'%(file, pygame.get_error()))
     return surface.convert()
 
-#Load "images"
+#Load image"s"
 def load_images(*files):
     imgs = []
     for file in files:
@@ -100,15 +100,6 @@ def main(winstyle = 0):
         pygame.mixer.music.fadeout(1000)
     pygame.time.wait(1000)
     pygame.quit()
-
-    while True:
-        pressed = pygame.key.get_pressed()
-        #get input
-        for event in pygame.event.get():
-            if event.type == QUIT or \
-                (event.type == pressed and event.key == K_ESCAPE):
-                    return
-        keystate = pygame.key.get_pressed()
 
 
     # clear/erase the last drawn sprites
