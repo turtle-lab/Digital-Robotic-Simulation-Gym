@@ -85,11 +85,15 @@ def main(winstyle = 0):
     background = pygame.Surface(SCREENRECT.size)
 
     agent.__init__()
+    player.__init__()
 
     #Render the background
     for x in range(0, SCREENRECT.width, bgdtile.get_width()):
         for y in range(0, SCREENRECT.height, bgdtile.get_height()):
             background.blit(bgdtile, (x, y))
+    
+    while True:
+        agent.action()
     
     #Blit the background
     screen.blit(background, (0,0))
