@@ -1,13 +1,16 @@
-#Main file of the digital simulation
+#Digital Robotic Simulation Gym Space
+#Authors: Jacob Lagares and Sergi Valverde
+#Started date: Some day in April of 2018
+#Last Release date:??/??/??
 
+import random
+import os.path
 
-import random, os.path
-
-#import basic pygame modules
 import pygame
 from player import Player
 from obstacle import Obstacle
 from pygame.locals import *
+from agent import *
 
 #see if we can load more than standard BMP
 if not pygame.image.get_extended():
@@ -18,6 +21,12 @@ SCREENRECT = Rect(0, 0, 1000, 500)
 print(SCREENRECT.midbottom)
 
 main_dir = os.path.split(os.path.abspath(__file__))[0]
+
+version = "0.14"
+
+agent = Agent()
+player = Player()
+obs = Obstacle()
 
 #Load image
 def load_image(file):
@@ -55,29 +64,27 @@ def load_sound(file):
 def main(winstyle = 0):
     # Initialize pygame
     pygame.init()
+
     if pygame.mixer and not pygame.mixer.get_init():
         print ('Warning, no sound')
         pygame.mixer = None
 
-    # Set the display mode
-    winstyle = 0  # |FULLSCREEN
+    #Set the display mode
+    winstyle = 0  #FULLSCREEN
     bestdepth = pygame.display.mode_ok(SCREENRECT.size, winstyle, 32)
     screen = pygame.display.set_mode(SCREENRECT.size, winstyle, bestdepth)
 
-    #Load images, assign to sprite classes
-    #(do this before the classes are used, after screen setup)
-    img = load_image('player1.gif')
-    Player.images = [img, pygame.transform.flip(img, 1, 0)]
-
     #decorate the game window
-    icon = pygame.transform.scale(Player.images[0], (32, 32))
-    pygame.display.set_icon(icon)
-    pygame.display.set_caption('Gym 10.0')
+    pygame.display.set_caption('Digital Robotic Simulation Gym Space', version)
+    print("Caption set to:", 'Digital Robotic Simulation Gym Space', version)
+    pygame.display.set_icon(load_image('chimp.bmp'))
     pygame.mouse.set_visible(0)
 
     #create the background, tile the bgd image
     bgdtile = load_image('background.gif')
     background = pygame.Surface(SCREENRECT.size)
+
+    agent.__init__()
 
     #Render the background
     for x in range(0, SCREENRECT.width, bgdtile.get_width()):
@@ -90,9 +97,6 @@ def main(winstyle = 0):
 
     #assign default groups to each sprite class
     all = pygame.sprite.RenderUpdates()
-    Player.containers = all
-    player = Player()
-    obs = Obstacle()
     player.setPos(SCREENRECT.width / 2, SCREENRECT.height / 2, 10, 10)
 
     #Setup the mixer
@@ -110,4 +114,3 @@ def main(winstyle = 0):
 
 #Call the "main" function if running this script
 main(0)
-

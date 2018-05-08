@@ -1,10 +1,11 @@
 import pygame
 import random
 import time
+
 from pygame.locals import *
 
 #THE PLAYER
-class Player(pygame.sprite.Sprite):
+class Player():
     #Init pygame
     pygame.init()
 
@@ -64,11 +65,6 @@ class Player(pygame.sprite.Sprite):
         pygame.display.update()
 
         print(self.x, self.y, self.w, self.h)
-
-    #Default "aliens example" shooter pos
-    def gunpos(self):
-        pos = self.facing * self.gun_offset + self.rect.centerx
-        return pos, self.rect.top
 
     #Set pos of the player
     def setPos(self, x, y, w, h):

@@ -26,7 +26,7 @@ class Obstacle(pygame.sprite.Sprite):
         print(self.obstaclesX, self.obstaclesY)
 
     #Draw stuff
-    def DrawObstacles():
+    def DrawObstacles(self):
         #Canvas creation and drawing
         #IDK how to create a canvas but I think the final result should look like this:
         #Canvas.FillRect(obstacleX, obstacleY, 10, 10, Color.orange)

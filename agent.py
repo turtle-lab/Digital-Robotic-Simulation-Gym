@@ -13,11 +13,12 @@ class Agent:
 
     player = Player()
     clock = pygame.time.Clock()
-
+    
     #Init agent
     def __init__(self):
         self.clock.tick(60)
         self.main()
+        player.__init__()
 
     #The main agent code
     #Here is the behaviour
