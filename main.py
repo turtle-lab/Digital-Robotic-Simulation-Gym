@@ -92,9 +92,6 @@ def main(winstyle = 0):
         for y in range(0, SCREENRECT.height, bgdtile.get_height()):
             background.blit(bgdtile, (x, y))
     
-    while True:
-        agent.action()
-    
     #Blit the background
     screen.blit(background, (0,0))
     pygame.display.flip()

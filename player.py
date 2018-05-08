@@ -53,6 +53,8 @@ class Player():
 
     #Repaint on movement
     def move(self, direction):
+        agent.action()
+
         self.drawPlayer(self.x, self.y, self.playerW, self.playerH, self.orange, 5)
         pygame.display.update()
         self.drawSensor()
